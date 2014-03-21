@@ -16,3 +16,7 @@ def get_all_appliance_types(name=None):
     if len(url) > 0:
         url = '&' + url
     return _create_req(url=url)
+
+if __name__ == '__main__':
+    print get_all_appliance_types()
+    print '----'

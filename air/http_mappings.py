@@ -24,3 +24,10 @@ def get_all_http_map(app_id=None, port_mapping_template_id=None):
 def get_http_map(_id):
     url = '/%s' % str(_id)
     return _create_req(url=url)
+
+if __name__ == '__main__':
+    print get_all_http_map()
+    print '----'
+
+    print get_http_map(0)
+    print '----'

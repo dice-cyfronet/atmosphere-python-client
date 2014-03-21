@@ -3,3 +3,4 @@
 *.ipr
 .idea/
 *.pyc
+secure_config.py

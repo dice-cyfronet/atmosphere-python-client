@@ -11,3 +11,7 @@ def _create_req(method=tools.HTTP_GET, url='', body=None, headers=None):
 
 def get_all_app_config_temp():
     return _create_req()
+
+if __name__ == '__main__':
+    print get_all_app_config_temp()
+    print '----'

@@ -2,6 +2,7 @@ import httplib
 import simplejson
 
 import config
+import secure_config
 
 
 __author__ = 'paoolo'
@@ -39,4 +40,4 @@ def func_create_req(api_url, api_prefix, api_private_token=None, api_mi_ticket=N
     return __create_req
 
 
-create_req = func_create_req(config.API_URL, config.API_PREFIX)
+create_req = func_create_req(config.API_URL, config.API_PREFIX, secure_config.API_TOKEN)

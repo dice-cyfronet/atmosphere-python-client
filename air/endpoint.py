@@ -72,3 +72,10 @@ def delete_endpoint(_id):
 def get_endpoint_descriptor(_id):
     url = '/%s/descriptor' % str(_id)
     return _create_req(method=tools.HTTP_GET, url=url)
+
+if __name__ == '__main__':
+    print get_all_endpoints()
+    print '----'
+
+    print get_endpoint(1)
+    print '----'
