@@ -5,10 +5,6 @@ __author__ = 'paoolo'
 PREFIX = '/http_mappings'
 
 
-def _create_req(method=tools.HTTP_GET, url='', body=None, headers=None):
-    return tools.create_req(method, PREFIX + url, body, headers)
-
-
 def get_all_http_map(app_id=None, port_mapping_template_id=None):
     url = ''
     if app_id is not None:
@@ -18,9 +14,9 @@ def get_all_http_map(app_id=None, port_mapping_template_id=None):
         url += 'port_mapping_template_id=%s' % str(port_mapping_template_id)
     if len(url) > 0:
         url = '?' + url
-    return _create_req(url=url)
+    return tools.create_req(url=url)
 
 
 def get_http_map(_id):
     url = '/%s' % str(_id)
-    return _create_req(url=url)
+    return tools.create_req(url=url)

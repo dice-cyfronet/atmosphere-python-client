@@ -1,5 +1,8 @@
 import httplib
+import inspect
 import simplejson
+import socket
+import logging
 
 import config
 
@@ -11,32 +14,75 @@ HTTP_POST = 'POST'
 HTTP_PUT = 'PUT'
 HTTP_DELETE = 'DELETE'
 
+__console_handler = logging.StreamHandler()
+__console_handler.setLevel(logging.INFO)
 
-def func_create_req(api_url, api_prefix, api_private_token=None, api_mi_ticket=None):
-    def __create_req(method, url, body=None, headers=None):
-        if not headers:
-            headers = {}
-        if not 'PRIVATE-TOKEN' in headers and api_private_token is not None:
-            headers['PRIVATE-TOKEN'] = api_private_token
-        if not 'MI-TICKET' in headers and api_mi_ticket is not None:
-            headers['MI-TICKET'] = api_mi_ticket
+__logger = logging.getLogger('air_python')
+__logger.addHandler(__console_handler)
 
+
+def _get_content(api_url, method, api_prefix, url, body, headers):
+    try:
         connection = httplib.HTTPConnection(api_url)
         connection.request(method, api_prefix + url, body, headers=headers)
-        response = connection.getresponse()
-        content = response.read()
 
-        try:
-            data = simplejson.loads(content)
-        except simplejson.JSONDecodeError as e:
-            data = {}
+        response = connection.getresponse()
+        # TODO: check code status
+        content = response.read()
 
         response.close()
         connection.close()
 
-        return data
+        return content
 
-    return __create_req
+    except httplib.HTTPException as h_exp:
+        __logger.warning('HTTP exception: %s' % str(h_exp))
+        raise h_exp
+
+    except socket.error as s_exp:
+        __logger.error('Socket exception: %s' % str(s_exp))
+        raise s_exp
 
 
-create_req = func_create_req(config.API_URL, config.API_PREFIX, config.API_TOKEN)
+def _check_and_set_headers(headers, keys_values):
+    for key, value in keys_values.items():
+        _check_and_set_header(headers, key, value)
+
+
+def _check_and_set_header(headers, key, value):
+    if not key in headers and value is not None:
+        headers[key] = value
+
+
+def _parse_as_json(content):
+    try:
+        return simplejson.loads(content)
+    except simplejson.JSONDecodeError as j_exp:
+        __logger.error('JSON exception: %s' % str(j_exp))
+        return {}
+
+
+def get_prefix():
+    frm = inspect.stack()[2]
+    mod = inspect.getmodule(frm[0])
+
+    try:
+        return mod.PREFIX
+    except AttributeError as a_exp:
+        __logger.warning("No PREFIX defined in module %s" % str(mod.__name__))
+        raise a_exp
+
+
+def create_req(method=HTTP_GET, url='', body=None, headers=None):
+    if not headers:
+        headers = {}
+
+    url = get_prefix() + url
+
+    _check_and_set_headers(headers, {'PRIVATE-TOKEN': config.API_PRIVATE_TOKEN,
+                                     'MI-TICKET': config.API_MI_TICKET})
+
+    content = _get_content(config.API_URL, method, config.API_PREFIX, url, body, headers)
+    data = _parse_as_json(content)
+
+    return data

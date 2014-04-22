@@ -2,14 +2,9 @@ import simplejson
 
 import tools
 
-
 __author__ = 'paoolo'
 
 PREFIX = '/dev_mode_property_sets'
-
-
-def _create_req(method=tools.HTTP_GET, url='', body=None, headers=None):
-    return tools.create_req(method, PREFIX + url, body, headers)
 
 
 def get_all_dev_mode_property_set(app_id=None):
@@ -18,12 +13,12 @@ def get_all_dev_mode_property_set(app_id=None):
         url += 'appliance_id=%s' % str(app_id)
     if len(url) > 0:
         url = '?' + url
-    return _create_req(url=url)
+    return tools.create_req(url=url)
 
 
 def get_dev_mode_property_set(_id):
     url = '/%s' % str(_id)
-    return _create_req(url=url)
+    return tools.create_req(url=url)
 
 
 def update_dev_mode_property_set(_id, name=None, description=None,
@@ -50,5 +45,5 @@ def update_dev_mode_property_set(_id, name=None, description=None,
         _data['security_proxy_id'] = security_proxy_id
     body = {'dev_mode_property_set': _data}
     body = simplejson.dumps(body)
-    return _create_req(method=tools.HTTP_PUT, url=url, body=body, headers={'Content-Length': len(body),
-                                                                           'Content-Type': 'application/json'})
+    return tools.create_req(method=tools.HTTP_PUT, url=url, body=body, headers={'Content-Length': len(body),
+                                                                                'Content-Type': 'application/json'})

@@ -2,29 +2,24 @@ import simplejson
 
 import tools
 
-
 __author__ = 'paoolo'
 
 PREFIX = '/appliances'
 
 
-def _create_req(method=tools.HTTP_GET, url='', body=None, headers=None):
-    return tools.create_req(method, PREFIX + url, body, headers)
-
-
 def get_all_app(_all=False):
     url = '?all=true' if _all else ''
-    return _create_req(url=url)
+    return tools.create_req(url=url)
 
 
 def get_app(_id):
     url = '/%s' % str(_id)
-    return _create_req(url=url)
+    return tools.create_req(url=url)
 
 
 def get_app_endpoints(_id):
     url = '/%s/endpoints' % str(_id)
-    return _create_req(url=url)
+    return tools.create_req(url=url)
 
 
 def create_app(appliance_set_id, configuration_template_id,
@@ -39,8 +34,8 @@ def create_app(appliance_set_id, configuration_template_id,
         _data['params'] = params
     body = {'appliance': _data}
     body = simplejson.dumps(body)
-    return _create_req(method=tools.HTTP_POST, body=body, headers={'Content-Length': len(body),
-                                                                   'Content-Type': 'application/json'})
+    return tools.create_req(method=tools.HTTP_POST, body=body, headers={'Content-Length': len(body),
+                                                                        'Content-Type': 'application/json'})
 
 
 def update_app(_id, name=None):
@@ -50,10 +45,10 @@ def update_app(_id, name=None):
     body = {'appliance': _data}
     body = simplejson.dumps(body)
     url = '/%s' % str(_id)
-    return _create_req(method=tools.HTTP_PUT, url=url, body=body, headers={'Content-Length': len(body),
-                                                                           'Content-Type': 'application/json'})
+    return tools.create_req(method=tools.HTTP_PUT, url=url, body=body, headers={'Content-Length': len(body),
+                                                                                'Content-Type': 'application/json'})
 
 
 def delete_app(_id):
     url = '/%s' % int(_id)
-    return _create_req(method=tools.HTTP_DELETE, url=url)
+    return tools.create_req(method=tools.HTTP_DELETE, url=url)

@@ -2,23 +2,18 @@ import simplejson
 
 import tools
 
-
 __author__ = 'paoolo'
 
 PREFIX = '/endpoints'
 
 
-def _create_req(method=tools.HTTP_GET, url='', body=None, headers=None):
-    return tools.create_req(method, PREFIX + url, body, headers)
-
-
 def get_all_endpoints():
-    return _create_req()
+    return tools.create_req()
 
 
 def get_endpoint(_id):
     url = '/%s' % str(_id)
-    return _create_req(url=url)
+    return tools.create_req(url=url)
 
 
 def create_endpoint(port_mapping_template_id, name=None,
@@ -37,8 +32,8 @@ def create_endpoint(port_mapping_template_id, name=None,
         _data['invocation_path'] = invocation_path
     body = {'endpoint': _data}
     body = simplejson.dumps(body)
-    return _create_req(method=tools.HTTP_POST, body=body, headers={'Content-Length': len(body),
-                                                                   'Content-Type': 'application/json'})
+    return tools.create_req(method=tools.HTTP_POST, body=body, headers={'Content-Length': len(body),
+                                                                        'Content-Type': 'application/json'})
 
 
 def update_endpoint(_id, port_mapping_template_id=None, name=None,
@@ -60,15 +55,15 @@ def update_endpoint(_id, port_mapping_template_id=None, name=None,
         _data['invocation_path'] = invocation_path
     body = {'endpoint': _data}
     body = simplejson.dumps(body)
-    return _create_req(method=tools.HTTP_POST, url=url, body=body, headers={'Content-Length': len(body),
-                                                                            'Content-Type': 'application/json'})
+    return tools.create_req(method=tools.HTTP_POST, url=url, body=body, headers={'Content-Length': len(body),
+                                                                                 'Content-Type': 'application/json'})
 
 
 def delete_endpoint(_id):
     url = '/%s' % str(_id)
-    return _create_req(method=tools.HTTP_DELETE, url=url)
+    return tools.create_req(method=tools.HTTP_DELETE, url=url)
 
 
 def get_endpoint_descriptor(_id):
     url = '/%s/descriptor' % str(_id)
-    return _create_req(method=tools.HTTP_GET, url=url)
+    return tools.create_req(method=tools.HTTP_GET, url=url)

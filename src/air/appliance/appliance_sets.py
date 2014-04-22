@@ -2,23 +2,18 @@ import simplejson
 
 import tools
 
-
 __author__ = 'paoolo'
 
 PREFIX = '/appliance_sets'
 
 
-def _create_req(method=tools.HTTP_GET, url='', body=None, headers=None):
-    return tools.create_req(method, PREFIX + url, body, headers)
-
-
 def get_all_app_set():
-    return _create_req()
+    return tools.create_req()
 
 
 def get_app_set(_id):
     url = '/%s' % str(_id)
-    return _create_req(url=url)
+    return tools.create_req(url=url)
 
 
 APP_SET_TYPE_DEV = 'development'
@@ -36,8 +31,8 @@ def create_app_set(name=None, priority=None, appliance_set_type=None):
         _data['appliance_set_type'] = appliance_set_type
     body = {'appliance_set': _data}
     body = simplejson.dumps(body)
-    return _create_req(method=tools.HTTP_POST, body=body, headers={'Content-Length': len(body),
-                                                                   'Content-Type': 'application/json'})
+    return tools.create_req(method=tools.HTTP_POST, body=body, headers={'Content-Length': len(body),
+                                                                        'Content-Type': 'application/json'})
 
 
 def update_app_set(_id, name=None, priority=None):
@@ -49,10 +44,10 @@ def update_app_set(_id, name=None, priority=None):
         _data['priority'] = priority
     body = {'appliance_set': _data}
     body = simplejson.dumps(body)
-    return _create_req(method=tools.HTTP_PUT, url=url, body=body, headers={'Content-Length': len(body),
-                                                                           'Content-Type': 'application/json'})
+    return tools.create_req(method=tools.HTTP_PUT, url=url, body=body, headers={'Content-Length': len(body),
+                                                                                'Content-Type': 'application/json'})
 
 
 def delete_app_set(_id):
     url = '/%s' % str(_id)
-    return _create_req(method=tools.HTTP_DELETE, url=url)
+    return tools.create_req(method=tools.HTTP_DELETE, url=url)
