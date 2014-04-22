@@ -1,6 +1,6 @@
 import simplejson
 
-from air import tools
+import tools
 
 
 __author__ = 'paoolo'
@@ -52,13 +52,3 @@ def update_dev_mode_property_set(_id, name=None, description=None,
     body = simplejson.dumps(body)
     return _create_req(method=tools.HTTP_PUT, url=url, body=body, headers={'Content-Length': len(body),
                                                                            'Content-Type': 'application/json'})
-
-
-if __name__ == '__main__':
-    print get_all_dev_mode_property_set()
-    print '----'
-
-    print get_dev_mode_property_set(0)
-    print '----'
-
-    print update_dev_mode_property_set(0)

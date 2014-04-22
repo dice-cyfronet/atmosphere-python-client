@@ -1,4 +1,4 @@
-from air import tools
+import tools
 
 __author__ = 'paoolo'
 
@@ -24,9 +24,3 @@ def get_all_port_mappings(port_mapping_template_id=None, virtual_machine_id=None
 def get_port_mapping(_id):
     url = '/%s' % str(_id)
     return _create_req(url=url)
-
-if __name__ == '__main__':
-    print get_all_port_mappings()
-    print '----'
-
-    print get_port_mapping(0)
