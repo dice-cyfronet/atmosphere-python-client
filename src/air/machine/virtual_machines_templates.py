@@ -1,4 +1,4 @@
-from air import tools
+import air.tools
 
 __author__ = 'paoolo'
 
@@ -6,4 +6,9 @@ PREFIX = '/virtual_machine_templates'
 
 
 def get_all_virtual_machines_templates():
-    return tools.create_req()
+    """
+    Get a list of virtual machines used by appliances added to user appliance sets.
+
+    :return:
+    """
+    return air.tools.create_req()

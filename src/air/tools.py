@@ -86,3 +86,7 @@ def create_req(method=HTTP_GET, url='', body=None, headers=None):
     data = _parse_as_json(content)
 
     return data
+
+
+def get_data(data):
+    return dict(filter(lambda val: val[1] is not None, data.items()))

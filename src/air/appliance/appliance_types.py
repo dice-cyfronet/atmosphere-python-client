@@ -1,4 +1,4 @@
-from air import tools
+import air.tools
 
 __author__ = 'paoolo'
 
@@ -11,4 +11,4 @@ def get_all_appliance_types(name=None):
         url += 'name=%s' % str(name)
     if len(url) > 0:
         url = '&' + url
-    return tools.create_req(url=url)
+    return air.tools.create_req(url=url)

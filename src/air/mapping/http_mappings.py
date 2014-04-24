@@ -1,4 +1,4 @@
-from air import tools
+import air.tools
 
 __author__ = 'paoolo'
 
@@ -14,9 +14,9 @@ def get_all_http_map(app_id=None, port_mapping_template_id=None):
         url += 'port_mapping_template_id=%s' % str(port_mapping_template_id)
     if len(url) > 0:
         url = '?' + url
-    return tools.create_req(url=url)
+    return air.tools.create_req(url=url)
 
 
 def get_http_map(_id):
     url = '/%s' % str(_id)
-    return tools.create_req(url=url)
+    return air.tools.create_req(url=url)

@@ -1,6 +1,6 @@
 import simplejson
 
-from air import tools
+import air.tools
 
 __author__ = 'paoolo'
 
@@ -8,62 +8,90 @@ PREFIX = '/endpoints'
 
 
 def get_all_endpoints():
-    return tools.create_req()
+    """
+    Get a list of endpoints defined for a given port mapping template.
+
+    :return:
+    """
+    return air.tools.create_req()
 
 
 def get_endpoint(_id):
+    """
+    Get the full JSON document about a given endpoint.
+
+    :param _id: positive decimal number, ID of endpoint (required)
+    :return:
+    """
     url = '/%s' % str(_id)
-    return tools.create_req(url=url)
+    return air.tools.create_req(url=url)
 
 
 def create_endpoint(port_mapping_template_id, name=None,
                     description=None, descriptor=None,
-                    endpoint_type=None, invocation_path=None):
-    _data = {'port_mapping_template_id': port_mapping_template_id}
-    if name is not None:
-        _data['name'] = name
-    if description is not None:
-        _data['description'] = description
-    if descriptor is not None:
-        _data['descriptor'] = descriptor
-    if endpoint_type is not None:
-        _data['endpoint_type'] = endpoint_type
-    if invocation_path is not None:
-        _data['invocation_path'] = invocation_path
+                    endpoint_type=None, invocation_path=None,
+                    secured=None):
+    """
+    Creates a new endpoint.
+
+    :param port_mapping_template_id: positive decimal number, ID of the port mapping template (required)
+    :param name: any string, short name (required)
+    :param description: any string, long textual human-readable description (optional)
+    :param descriptor: any string, machine-readable (optional)
+    :param endpoint_type: one of "rest", "ws", "webapp" (required)
+    :param invocation_path: any string, app invocation path (required)
+    :param secured: if endpoint is secured (optional, default False)
+    :return:
+    """
+    _data = air.tools.get_data(locals())
     body = {'endpoint': _data}
     body = simplejson.dumps(body)
-    return tools.create_req(method=tools.HTTP_POST, body=body, headers={'Content-Length': len(body),
-                                                                        'Content-Type': 'application/json'})
+    return air.tools.create_req(method=air.tools.HTTP_POST, body=body, headers={'Content-Length': len(body),
+                                                                                'Content-Type': 'application/json'})
 
 
 def update_endpoint(_id, port_mapping_template_id=None, name=None,
                     description=None, descriptor=None,
-                    endpoint_type=None, invocation_path=None):
+                    endpoint_type=None, invocation_path=None,
+                    secured=None):
+    """
+    Update endpoint.
+
+    :param _id: positive decimal number, ID of endpoint (required)
+    :param port_mapping_template_id: positive decimal number, ID of the port mapping template (required)
+    :param name: any string, short name (required)
+    :param description: any string, long textual human-readable description (optional)
+    :param descriptor: any string, machine-readable (optional)
+    :param endpoint_type: one of "rest", "ws", "webapp" (required)
+    :param invocation_path: any string, app invocation path (required)
+    :param secured: if endpoint is secured (optional, default False)
+    :return:
+    """
+    _data = air.tools.get_data(locals())
     url = '/%s' % str(_id)
-    _data = {}
-    if port_mapping_template_id is not None:
-        _data['port_mapping_template_id'] = port_mapping_template_id
-    if name is not None:
-        _data['name'] = name
-    if description is not None:
-        _data['description'] = description
-    if descriptor is not None:
-        _data['descriptor'] = descriptor
-    if endpoint_type is not None:
-        _data['endpoint_type'] = endpoint_type
-    if invocation_path is not None:
-        _data['invocation_path'] = invocation_path
     body = {'endpoint': _data}
     body = simplejson.dumps(body)
-    return tools.create_req(method=tools.HTTP_POST, url=url, body=body, headers={'Content-Length': len(body),
-                                                                                 'Content-Type': 'application/json'})
+    return air.tools.create_req(method=air.tools.HTTP_POST, url=url, body=body, headers={'Content-Length': len(body),
+                                                                                         'Content-Type': 'application/json'})
 
 
 def delete_endpoint(_id):
+    """
+    Delete endpoint.
+
+    :param _id: positive decimal number, ID of endpoint (required)
+    :return:
+    """
     url = '/%s' % str(_id)
-    return tools.create_req(method=tools.HTTP_DELETE, url=url)
+    return air.tools.create_req(method=air.tools.HTTP_DELETE, url=url)
 
 
 def get_endpoint_descriptor(_id):
+    """
+    Get descriptor of endpoint.
+
+    :param _id: positive decimal number, ID of endpoint (required)
+    :return:
+    """
     url = '/%s/descriptor' % str(_id)
-    return tools.create_req(method=tools.HTTP_GET, url=url)
+    return air.tools.create_req(method=air.tools.HTTP_GET, url=url)
