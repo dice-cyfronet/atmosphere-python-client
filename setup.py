@@ -1,5 +1,4 @@
 # coding=utf-8
-# !/usr/bin/env python
 
 __author__ = 'paoolo'
 
@@ -13,8 +12,12 @@ with open('requirements.txt') as f:
 
 setup(
     name='air-python',
-    packages=['air'],
-    package_dir={'air': 'src/air'},
+    packages=['air', 'air.appliance', 'air.machine', 'air.mapping', 'air.property'],
+    package_dir={'air': 'src/air',
+                 'air.appliance': 'src/air/appliance',
+                 'air.machine': 'src/air/machine',
+                 'air.mapping': 'src/air/mapping',
+                 'air.property': 'src/air/property'},
     install_requires=required,
     version='1.0',
     description='AIR REST API wrapper in python',
@@ -30,7 +33,7 @@ setup(
         'Intended Audience :: Developers',
         'License :: Other/Proprietary License',
         'Operating System :: OS Independent',
-        ],
+    ],
     long_description='''\
 '''
 )

@@ -1,8 +1,9 @@
 import unittest
 
-import config
+import air.config
 from air.appliance import appliance_sets
 from air.appliance.appliances import *
+
 
 __author__ = 'paoolo'
 
@@ -18,7 +19,7 @@ class MyTestCase(unittest.TestCase):
             print get_all_app()
             print '----'
 
-            app = create_app(_app_set['appliance_set']['id'], config.CONF_AT_ID)
+            app = create_app(_app_set['appliance_set']['id'], air.config.CONF_AT_ID)
 
             print app
             try:
@@ -47,4 +48,5 @@ class MyTestCase(unittest.TestCase):
 
 
 if __name__ == '__main__':
+    air.config.add_config_ini('../config/main.ini', '../config/secure.ini')
     unittest.main()

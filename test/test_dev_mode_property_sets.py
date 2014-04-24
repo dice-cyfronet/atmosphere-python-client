@@ -1,6 +1,7 @@
 import unittest
 
-from air.dev_mode_property_sets import *
+import air.config
+from air.property.dev_mode_property_sets import *
 
 __author__ = 'paoolo'
 
@@ -18,4 +19,5 @@ class MyTestCase(unittest.TestCase):
 
 
 if __name__ == '__main__':
+    air.config.add_config_ini('../config/main.ini', '../config/secure.ini')
     unittest.main()

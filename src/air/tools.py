@@ -4,7 +4,7 @@ import simplejson
 import socket
 import logging
 
-import config
+from air import config
 
 
 __author__ = 'paoolo'
@@ -69,7 +69,7 @@ def get_prefix():
     try:
         return mod.PREFIX
     except AttributeError as a_exp:
-        __logger.warning("No PREFIX defined in module %s" % str(mod.__name__))
+        __logger.warning('No PREFIX defined in module %s' % str(mod.__name__))
         raise a_exp
 
 

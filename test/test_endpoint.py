@@ -1,5 +1,6 @@
 import unittest
 
+import air.config
 from air.mapping.endpoint import *
 
 __author__ = 'paoolo'
@@ -18,4 +19,5 @@ class MyTestCase(unittest.TestCase):
 
 
 if __name__ == '__main__':
+    air.config.add_config_ini('../config/main.ini', '../config/secure.ini')
     unittest.main()

@@ -1,10 +1,10 @@
 import unittest
 
-import config
+import air.config
 from air.appliance import appliances
-from air import dev_mode_property_sets
 from air.appliance import appliance_sets
 from air.mapping.port_mapping_templates import *
+from air.property import dev_mode_property_sets
 
 __author__ = 'paoolo'
 
@@ -16,7 +16,7 @@ class MyTestCase(unittest.TestCase):
         print _app_set
         print '----'
 
-        _app = appliances.create_app(_app_set['appliance_set']['id'], config.CONF_AT_ID)
+        _app = appliances.create_app(_app_set['appliance_set']['id'], air.config.CONF_AT_ID)
         print _app
         print '----'
 
@@ -52,4 +52,5 @@ class MyTestCase(unittest.TestCase):
 
 
 if __name__ == '__main__':
+    air.config.add_config_ini('../config/main.ini', '../config/secure.ini')
     unittest.main()

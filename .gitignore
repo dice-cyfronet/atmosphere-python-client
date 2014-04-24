@@ -6,3 +6,8 @@
 *.pyc
 
 secure.ini
+
+*.egg-info/
+build/
+dist/
+out/
