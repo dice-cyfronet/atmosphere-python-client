@@ -5,6 +5,8 @@ from air.appliance.appliance_sets import *
 
 __author__ = 'paoolo'
 
+air.config.add_config_ini('../config/main.ini', '../config/secure.ini')
+
 
 class MyTestCase(unittest.TestCase):
     def test_something(self):
@@ -39,5 +41,4 @@ class MyTestCase(unittest.TestCase):
 
 
 if __name__ == '__main__':
-    air.config.add_config_ini('../config/main.ini', '../config/secure.ini')
     unittest.main()

@@ -1,7 +1,7 @@
 import unittest
 
 import air.config
-from air.property.dev_mode_property_sets import *
+from air.machine.compute_sites import *
 
 __author__ = 'paoolo'
 
@@ -10,13 +10,10 @@ air.config.add_config_ini('../config/main.ini', '../config/secure.ini')
 
 class MyTestCase(unittest.TestCase):
     def test_something(self):
-        print get_all_dev_mode_property_set()
+        print get_all_compute_sites()
         print '----'
 
-        print get_dev_mode_property_set(0)
-        print '----'
-
-        print update_dev_mode_property_set(0)
+        print get_compute_sites(1)
         print '----'
 
 
