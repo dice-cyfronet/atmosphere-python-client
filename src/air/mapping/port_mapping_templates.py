@@ -1,5 +1,3 @@
-import simplejson
-
 import air.tools
 
 __author__ = 'paoolo'
@@ -57,9 +55,7 @@ def create_port_map_temp_for_at(appliance_type_id,
     """
     _data = air.tools.get_data(locals())
     body = {'port_mapping_template': _data}
-    body = simplejson.dumps(body)
-    return air.tools.create_req(method=air.tools.HTTP_POST, body=body, headers={'Content-Length': len(body),
-                                                                                'Content-Type': 'application/json'})
+    return air.tools.create_req_json_body(method=air.tools.HTTP_POST, body=body)
 
 
 def create_port_map_temp_for_dev(dev_mode_property_set_id,
@@ -75,9 +71,7 @@ def create_port_map_temp_for_dev(dev_mode_property_set_id,
     """
     _data = air.tools.get_data(locals())
     body = {'port_mapping_template': _data}
-    body = simplejson.dumps(body)
-    return air.tools.create_req(method=air.tools.HTTP_POST, body=body, headers={'Content-Length': len(body),
-                                                                                'Content-Type': 'application/json'})
+    return air.tools.create_req_json_body(method=air.tools.HTTP_POST, body=body)
 
 
 def update_port_map_temp(_id, appliance_type_id=None, dev_mode_property_set_id=None,
@@ -95,11 +89,10 @@ def update_port_map_temp(_id, appliance_type_id=None, dev_mode_property_set_id=N
     :return:
     """
     _data = air.tools.get_data(locals())
-    url = '/%s' % str(_id)
+    _data['id'] = _id
     body = {'port_mapping_template': _data}
-    body = simplejson.dumps(body)
-    return air.tools.create_req(method=air.tools.HTTP_PUT, url=url, body=body, headers={'Content-Length': len(body),
-                                                                                        'Content-Type': 'application/json'})
+    url = '/%s' % str(_id)
+    return air.tools.create_req_json_body(method=air.tools.HTTP_PUT, url=url, body=body)
 
 
 def delete_port_map_temp(_id):

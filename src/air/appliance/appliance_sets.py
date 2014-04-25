@@ -1,5 +1,3 @@
-import simplejson
-
 import air.tools
 
 
@@ -44,9 +42,7 @@ def create_app_set(name=None, priority=None, appliance_set_type=None):
     """
     _data = air.tools.get_data(locals())
     body = {'appliance_set': _data}
-    body = simplejson.dumps(body)
-    return air.tools.create_req(method=air.tools.HTTP_POST, body=body, headers={'Content-Length': len(body),
-                                                                                'Content-Type': 'application/json'})
+    return air.tools.create_req_json_body(method=air.tools.HTTP_POST, body=body)
 
 
 def update_app_set(_id, name=None, priority=None):
@@ -58,12 +54,11 @@ def update_app_set(_id, name=None, priority=None):
     :param priority: positive decimal number (optional)
     :return:
     """
-    url = '/%s' % str(_id)
     _data = air.tools.get_data(locals())
+    _data['id'] = _id
     body = {'appliance_set': _data}
-    body = simplejson.dumps(body)
-    return air.tools.create_req(method=air.tools.HTTP_PUT, url=url, body=body, headers={'Content-Length': len(body),
-                                                                                        'Content-Type': 'application/json'})
+    url = '/%s' % str(_id)
+    return air.tools.create_req_json_body(method=air.tools.HTTP_PUT, url=url, body=body)
 
 
 def delete_app_set(_id):

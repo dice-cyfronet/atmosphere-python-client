@@ -1,5 +1,3 @@
-import simplejson
-
 import air.tools
 
 __author__ = 'paoolo'
@@ -54,9 +52,7 @@ def create_app(appliance_set_id, configuration_template_id,
     """
     _data = air.tools.get_data(locals())
     body = {'appliance': _data}
-    body = simplejson.dumps(body)
-    return air.tools.create_req(method=air.tools.HTTP_POST, body=body, headers={'Content-Length': len(body),
-                                                                                'Content-Type': 'application/json'})
+    return air.tools.create_req_json_body(method=air.tools.HTTP_POST, body=body)
 
 
 def update_app(_id, name=None):
@@ -68,11 +64,10 @@ def update_app(_id, name=None):
     :return:
     """
     _data = air.tools.get_data(locals())
+    _data['id'] = _id
     body = {'appliance': _data}
-    body = simplejson.dumps(body)
     url = '/%s' % str(_id)
-    return air.tools.create_req(method=air.tools.HTTP_PUT, url=url, body=body, headers={'Content-Length': len(body),
-                                                                                        'Content-Type': 'application/json'})
+    return air.tools.create_req_json_body(method=air.tools.HTTP_PUT, url=url, body=body)
 
 
 def delete_app(_id):

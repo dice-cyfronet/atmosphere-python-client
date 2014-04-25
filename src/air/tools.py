@@ -73,11 +73,9 @@ def get_prefix():
         raise a_exp
 
 
-def create_req(method=HTTP_GET, url='', body=None, headers=None):
+def _create_req(method=HTTP_GET, url='', body=None, headers=None):
     if not headers:
         headers = {}
-
-    url = get_prefix() + url
 
     _check_and_set_headers(headers, {'PRIVATE-TOKEN': config.API_PRIVATE_TOKEN,
                                      'MI-TICKET': config.API_MI_TICKET})
@@ -86,6 +84,24 @@ def create_req(method=HTTP_GET, url='', body=None, headers=None):
     data = _parse_as_json(content)
 
     return data
+
+
+def create_req(method=HTTP_GET, url='', body=None, headers=None):
+    url = get_prefix() + url
+    return _create_req(method, url, body, headers)
+
+
+def create_req_json_body(method=HTTP_GET, url='', body=None, headers=None):
+    if not headers:
+        headers = {}
+
+    body = simplejson.dumps(body)
+
+    _check_and_set_headers(headers, {'Content-Length': len(body),
+                                     'Content-Type': 'application/json'})
+
+    url = get_prefix() + url
+    return _create_req(method, url, body, headers)
 
 
 def get_data(data):

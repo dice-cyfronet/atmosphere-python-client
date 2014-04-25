@@ -1,5 +1,3 @@
-import simplejson
-
 import air.tools
 
 __author__ = 'paoolo'
@@ -45,9 +43,7 @@ def create_endpoint(port_mapping_template_id, name=None,
     """
     _data = air.tools.get_data(locals())
     body = {'endpoint': _data}
-    body = simplejson.dumps(body)
-    return air.tools.create_req(method=air.tools.HTTP_POST, body=body, headers={'Content-Length': len(body),
-                                                                                'Content-Type': 'application/json'})
+    return air.tools.create_req_json_body(method=air.tools.HTTP_POST, body=body)
 
 
 def update_endpoint(_id, port_mapping_template_id=None, name=None,
@@ -68,11 +64,10 @@ def update_endpoint(_id, port_mapping_template_id=None, name=None,
     :return:
     """
     _data = air.tools.get_data(locals())
-    url = '/%s' % str(_id)
+    _data['id'] = _id
     body = {'endpoint': _data}
-    body = simplejson.dumps(body)
-    return air.tools.create_req(method=air.tools.HTTP_POST, url=url, body=body, headers={'Content-Length': len(body),
-                                                                                         'Content-Type': 'application/json'})
+    url = '/%s' % str(_id)
+    return air.tools.create_req_json_body(method=air.tools.HTTP_POST, url=url, body=body)
 
 
 def delete_endpoint(_id):

@@ -1,4 +1,4 @@
-from air import tools
+import air.tools
 
 __author__ = 'paoolo'
 
@@ -11,4 +11,4 @@ def get_all_app_config_temp():
 
     :return: list of appliance configuration templates
     """
-    return tools.create_req()
+    return air.tools.create_req()
