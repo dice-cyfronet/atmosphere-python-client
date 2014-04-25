@@ -7,8 +7,13 @@ try:
 except ImportError:
     from distutils.core import setup
 
-with open('requirements.txt') as f:
-    required = f.read().splitlines()
+try:
+    with open('requirements.txt') as f:
+        required = f.read().splitlines()
+except IOError:
+    # FIXME: it is a hack.
+    print 'File \'requirements.txt\' not found. Use empty list.'
+    required = []
 
 setup(
     name='air-python',

@@ -13,8 +13,7 @@ class Config(object):
         # noinspection PyBroadException
         try:
             return self.__config.get('default', name)
-        except Exception as n_exp:
-            print 'Cannot found value for %s in config' % name
+        except Exception:
             return None
 
     def add_config_ini(self, *args):
