@@ -1,28 +1,27 @@
 # coding=utf-8
 
+import os
+
 __author__ = 'paoolo'
+
+pwd = os.path.dirname(os.path.abspath(__file__))
 
 try:
     from setuptools import setup
 except ImportError:
     from distutils.core import setup
 
-try:
-    with open('requirements.txt') as f:
-        required = f.read().splitlines()
-except IOError:
-    # FIXME: it is a hack.
-    print 'File \'requirements.txt\' not found. Use empty list.'
-    required = []
+with open('%s/requirements.txt' % pwd) as f:
+    required = f.read().splitlines()
 
 setup(
     name='air-python',
     packages=['air', 'air.appliance', 'air.machine', 'air.mapping', 'air.property'],
-    package_dir={'air': 'src/air',
-                 'air.appliance': 'src/air/appliance',
-                 'air.machine': 'src/air/machine',
-                 'air.mapping': 'src/air/mapping',
-                 'air.property': 'src/air/property'},
+    package_dir={'air': '%s/src/air' % pwd,
+                 'air.appliance': '%s/src/air/appliance' % pwd,
+                 'air.machine': '%s/src/air/machine' % pwd,
+                 'air.mapping': '%s/src/air/mapping' % pwd,
+                 'air.property': '%s/src/air/property' % pwd},
     install_requires=required,
     version='1.0',
     description='AIR REST API wrapper in python',
