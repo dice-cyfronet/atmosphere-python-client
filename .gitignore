@@ -3,11 +3,14 @@
 *.ipr
 .idea/
 
-*.pyc
-
-secure.ini
-
 *.egg-info/
 build/
 dist/
 out/
+
+secure.ini
+
+*.tar
+*.pyc
+*.pyo
+*.po
