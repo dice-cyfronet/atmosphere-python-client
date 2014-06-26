@@ -9,6 +9,8 @@ dist/
 out/
 
 secure.ini
+main.ini
+main.py
 
 *.tar
 *.pyc

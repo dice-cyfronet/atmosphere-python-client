@@ -4,6 +4,7 @@ import unittest
 import air.config
 from air.appliance.appliance_sets import *
 
+
 __author__ = 'paoolo'
 
 pwd = os.path.dirname(os.path.abspath(__file__))
