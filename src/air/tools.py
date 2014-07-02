@@ -28,6 +28,9 @@ def _get_content(api_url, method, api_prefix, url, body, headers):
 
         response = connection.getresponse()
         # TODO: check code status
+        if not 200 <= response.status < 300:
+            raise httplib.HTTPException('Response code is %d' % response.status)
+
         content = response.read()
 
         response.close()
