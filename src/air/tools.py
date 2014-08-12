@@ -21,9 +21,13 @@ __logger = logging.getLogger('air_python')
 __logger.addHandler(__console_handler)
 
 
-def _get_content(api_url, method, api_prefix, url, body, headers):
+def _get_content(api_url, method, api_prefix, url, body, headers, https=False):
     try:
-        connection = httplib.HTTPConnection(api_url)
+        if https:
+            connection = httplib.HTTPSConnection(api_url)
+        else:
+            connection = httplib.HTTPConnection(api_url)
+
         connection.request(method, api_prefix + url, body, headers=headers)
 
         response = connection.getresponse()
@@ -83,7 +87,7 @@ def _create_req(method=HTTP_GET, url='', body=None, headers=None):
     _check_and_set_headers(headers, {'PRIVATE-TOKEN': config.API_PRIVATE_TOKEN,
                                      'MI-TICKET': config.API_MI_TICKET})
 
-    content = _get_content(config.API_URL, method, config.API_PREFIX, url, body, headers)
+    content = _get_content(config.API_URL, method, config.API_PREFIX, url, body, headers, (config.HTTPS == 'True'))
     data = _parse_as_json(content)
 
     return data
