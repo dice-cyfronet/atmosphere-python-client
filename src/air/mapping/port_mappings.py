@@ -5,7 +5,7 @@ __author__ = 'paoolo'
 PREFIX = '/port_mappings'
 
 
-def get_all_port_mappings(port_mapping_template_id=None, virtual_machine_id=None):
+def get_all_port_mappings(_all=False, port_mapping_template_id=None, virtual_machine_id=None):
     """
     Get a list of port mappings.
 
@@ -13,7 +13,7 @@ def get_all_port_mappings(port_mapping_template_id=None, virtual_machine_id=None
     :param virtual_machine_id:
     :return:
     """
-    url = ''
+    url = 'all=true' if _all else ''
     if port_mapping_template_id is not None:
         url += 'port_mapping_template_id=%s' % str(port_mapping_template_id)
     if virtual_machine_id is not None:
