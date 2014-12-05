@@ -12,6 +12,8 @@ If you have installed `atmosphere-client-python`, if any problem occurs, run
 Test
 ----
 
+Copy file `config/main-example.ini` to `config/main.ini` and
+`config/secure-example.ini` to `config/secure.ini`. Edit these files.
 Execute `test/run-test.sh`. You do not need to install `atmosphere-client-python`.
 
 Usage
