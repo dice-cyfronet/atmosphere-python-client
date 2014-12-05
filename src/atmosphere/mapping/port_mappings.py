@@ -1,4 +1,4 @@
-import air.tools
+import atmosphere.tools
 
 __author__ = 'paoolo'
 
@@ -22,7 +22,7 @@ def get_all_port_mappings(_all=False, port_mapping_template_id=None, virtual_mac
         url += 'virtual_machine_id=%s' % str(virtual_machine_id)
     if len(url) > 0:
         url = '?' + url
-    return air.tools.create_req(url=url)
+    return atmosphere.tools.create_req(url=url)
 
 
 def get_port_mapping(_id):
@@ -33,4 +33,4 @@ def get_port_mapping(_id):
     :return:
     """
     url = '/%s' % str(_id)
-    return air.tools.create_req(url=url)
+    return atmosphere.tools.create_req(url=url)

@@ -1,4 +1,4 @@
-import air.tools
+import atmosphere.tools
 
 __author__ = 'paoolo'
 
@@ -11,7 +11,7 @@ def get_all_app_config_temp():
 
     :return: list of appliance configuration templates
     """
-    return air.tools.create_req()
+    return atmosphere.tools.create_req()
 
 
 def create_app_conf_temp(appliance_type_id, name=None, payload=None):
@@ -23,9 +23,9 @@ def create_app_conf_temp(appliance_type_id, name=None, payload=None):
     :param payload: any string (optional)
     :return:
     """
-    _data = air.tools.get_data(locals())
+    _data = atmosphere.tools.get_data(locals())
     body = {'appliance_configuration_template': _data}
-    return air.tools.create_req_json_body(method=air.tools.HTTP_POST, body=body)
+    return atmosphere.tools.create_req_json_body(method=atmosphere.tools.HTTP_POST, body=body)
 
 
 def update_app_conf_temp(_id, name=None, payload=None):
@@ -37,11 +37,11 @@ def update_app_conf_temp(_id, name=None, payload=None):
     :param payload: any string (optional)
     :return:
     """
-    _data = air.tools.get_data(locals())
+    _data = atmosphere.tools.get_data(locals())
     _data['id'] = _id
     body = {'appliance_configuration_template': _data}
     url = '/%s' % str(_id)
-    return air.tools.create_req_json_body(method=air.tools.HTTP_PUT, url=url, body=body)
+    return atmosphere.tools.create_req_json_body(method=atmosphere.tools.HTTP_PUT, url=url, body=body)
 
 
 def delete_app_conf_temp(_id):
@@ -51,4 +51,4 @@ def delete_app_conf_temp(_id):
     :return:
     """
     url = '/%s' % str(_id)
-    return air.tools.create_req(method=air.tools.HTTP_DELETE, url=url)
+    return atmosphere.tools.create_req(method=atmosphere.tools.HTTP_DELETE, url=url)

@@ -1,15 +1,15 @@
 import os
 import unittest
 
-import air.config
-from air.appliance import appliance_sets
-from air.appliance.appliances import *
+import atmosphere.config
+from atmosphere.appliance import appliance_sets
+from atmosphere.appliance.appliances import *
 
 
 __author__ = 'paoolo'
 
 pwd = os.path.dirname(os.path.abspath(__file__))
-air.config.add_config_ini('%s/../config/main.ini' % pwd, '%s/../config/secure.ini' % pwd)
+atmosphere.config.add_config_ini('%s/../config/main.ini' % pwd, '%s/../config/secure.ini' % pwd)
 
 
 class MyTestCase(unittest.TestCase):
@@ -23,7 +23,7 @@ class MyTestCase(unittest.TestCase):
             print get_all_app()
             print '----'
 
-            app = create_app(_app_set['appliance_set']['id'], air.config.CONF_AT_ID)
+            app = create_app(_app_set['appliance_set']['id'], atmosphere.config.CONF_AT_ID)
 
             print app
             try:

@@ -1,4 +1,4 @@
-import air.tools
+import atmosphere.tools
 
 __author__ = 'paoolo'
 
@@ -13,7 +13,7 @@ def get_all_app(_all=False):
     :return:
     """
     url = '?all=true' if _all else ''
-    return air.tools.create_req(url=url)
+    return atmosphere.tools.create_req(url=url)
 
 
 def get_app(_id):
@@ -24,7 +24,7 @@ def get_app(_id):
     :return:
     """
     url = '/%s' % str(_id)
-    return air.tools.create_req(url=url)
+    return atmosphere.tools.create_req(url=url)
 
 
 def get_app_endpoints(_id):
@@ -35,7 +35,7 @@ def get_app_endpoints(_id):
     :return:
     """
     url = '/%s/endpoints' % str(_id)
-    return air.tools.create_req(url=url)
+    return atmosphere.tools.create_req(url=url)
 
 
 def create_app(appliance_set_id, configuration_template_id,
@@ -50,9 +50,9 @@ def create_app(appliance_set_id, configuration_template_id,
     :param params: a dict of params
     :return:
     """
-    _data = air.tools.get_data(locals())
+    _data = atmosphere.tools.get_data(locals())
     body = {'appliance': _data}
-    return air.tools.create_req_json_body(method=air.tools.HTTP_POST, body=body)
+    return atmosphere.tools.create_req_json_body(method=atmosphere.tools.HTTP_POST, body=body)
 
 
 def update_app(_id, name=None):
@@ -63,11 +63,11 @@ def update_app(_id, name=None):
     :param name: any string (optional)
     :return:
     """
-    _data = air.tools.get_data(locals())
+    _data = atmosphere.tools.get_data(locals())
     _data['id'] = _id
     body = {'appliance': _data}
     url = '/%s' % str(_id)
-    return air.tools.create_req_json_body(method=air.tools.HTTP_PUT, url=url, body=body)
+    return atmosphere.tools.create_req_json_body(method=atmosphere.tools.HTTP_PUT, url=url, body=body)
 
 
 def delete_app(_id):
@@ -78,4 +78,4 @@ def delete_app(_id):
     :return:
     """
     url = '/%s' % int(_id)
-    return air.tools.create_req(method=air.tools.HTTP_DELETE, url=url)
+    return atmosphere.tools.create_req(method=atmosphere.tools.HTTP_DELETE, url=url)

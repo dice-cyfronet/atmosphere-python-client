@@ -1,4 +1,4 @@
-import air.tools
+import atmosphere.tools
 
 __author__ = 'paoolo'
 
@@ -13,7 +13,7 @@ def get_all_port_map_temp_by_at(appliance_type_id):
     :return:
     """
     url = '?appliance_type_id=%s' % str(appliance_type_id)
-    return air.tools.create_req(url=url)
+    return atmosphere.tools.create_req(url=url)
 
 
 def get_all_port_map_temp_by_dev(dev_mode_property_set_id, target_port=None):
@@ -27,7 +27,7 @@ def get_all_port_map_temp_by_dev(dev_mode_property_set_id, target_port=None):
     url = '?dev_mode_property_set_id=%s' % str(dev_mode_property_set_id)
     if target_port is not None:
         url += '&target_port=%s' % str(target_port)
-    return air.tools.create_req(url=url)
+    return atmosphere.tools.create_req(url=url)
 
 
 def get_port_map_temp(_id):
@@ -38,7 +38,7 @@ def get_port_map_temp(_id):
     :return:
     """
     url = '/%s' % str(_id)
-    return air.tools.create_req(url=url)
+    return atmosphere.tools.create_req(url=url)
 
 
 def create_port_map_temp_for_at(appliance_type_id,
@@ -53,9 +53,9 @@ def create_port_map_temp_for_at(appliance_type_id,
     :param target_port: positive decimal number, port number (required)
     :return:
     """
-    _data = air.tools.get_data(locals())
+    _data = atmosphere.tools.get_data(locals())
     body = {'port_mapping_template': _data}
-    return air.tools.create_req_json_body(method=air.tools.HTTP_POST, body=body)
+    return atmosphere.tools.create_req_json_body(method=atmosphere.tools.HTTP_POST, body=body)
 
 
 def create_port_map_temp_for_dev(dev_mode_property_set_id,
@@ -69,9 +69,9 @@ def create_port_map_temp_for_dev(dev_mode_property_set_id,
     :param target_port: positive decimal number, port number (required)
     :return:
     """
-    _data = air.tools.get_data(locals())
+    _data = atmosphere.tools.get_data(locals())
     body = {'port_mapping_template': _data}
-    return air.tools.create_req_json_body(method=air.tools.HTTP_POST, body=body)
+    return atmosphere.tools.create_req_json_body(method=atmosphere.tools.HTTP_POST, body=body)
 
 
 def update_port_map_temp(_id, appliance_type_id=None, dev_mode_property_set_id=None,
@@ -88,11 +88,11 @@ def update_port_map_temp(_id, appliance_type_id=None, dev_mode_property_set_id=N
     :param target_port: positive decimal number, port number (optional)
     :return:
     """
-    _data = air.tools.get_data(locals())
+    _data = atmosphere.tools.get_data(locals())
     _data['id'] = _id
     body = {'port_mapping_template': _data}
     url = '/%s' % str(_id)
-    return air.tools.create_req_json_body(method=air.tools.HTTP_PUT, url=url, body=body)
+    return atmosphere.tools.create_req_json_body(method=atmosphere.tools.HTTP_PUT, url=url, body=body)
 
 
 def delete_port_map_temp(_id):
@@ -103,7 +103,7 @@ def delete_port_map_temp(_id):
     :return:
     """
     url = '/%s' % str(_id)
-    return air.tools.create_req(method=air.tools.HTTP_DELETE, url=url)
+    return atmosphere.tools.create_req(method=atmosphere.tools.HTTP_DELETE, url=url)
 
 
 def get_dev_id_for_app(app_id, dev_sets):

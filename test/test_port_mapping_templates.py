@@ -1,16 +1,16 @@
 import os
 import unittest
 
-import air.config
-from air.appliance import appliances
-from air.appliance import appliance_sets
-from air.mapping.port_mapping_templates import *
-from air.property import dev_mode_property_sets
+import atmosphere.config
+from atmosphere.appliance import appliances
+from atmosphere.appliance import appliance_sets
+from atmosphere.mapping.port_mapping_templates import *
+from atmosphere.property import dev_mode_property_sets
 
 __author__ = 'paoolo'
 
 pwd = os.path.dirname(os.path.abspath(__file__))
-air.config.add_config_ini('%s/../config/main.ini' % pwd, '%s/../config/secure.ini' % pwd)
+atmosphere.config.add_config_ini('%s/../config/main.ini' % pwd, '%s/../config/secure.ini' % pwd)
 
 
 class MyTestCase(unittest.TestCase):
@@ -20,7 +20,7 @@ class MyTestCase(unittest.TestCase):
         print _app_set
         print '----'
 
-        _app = appliances.create_app(_app_set['appliance_set']['id'], air.config.CONF_AT_ID)
+        _app = appliances.create_app(_app_set['appliance_set']['id'], atmosphere.config.CONF_AT_ID)
         print _app
         print '----'
 

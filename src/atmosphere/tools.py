@@ -4,7 +4,7 @@ import simplejson
 import socket
 import logging
 
-from air import config
+from atmosphere import config
 
 
 __author__ = 'paoolo'

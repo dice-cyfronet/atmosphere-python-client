@@ -1,14 +1,14 @@
 import unittest
 import os
 
-import air.config
-from air.property.dev_mode_property_sets import *
+import atmosphere.config
+from atmosphere.property.dev_mode_property_sets import *
 
 
 __author__ = 'paoolo'
 
 pwd = os.path.dirname(os.path.abspath(__file__))
-air.config.add_config_ini('%s/../config/main.ini' % pwd, '%s/../config/secure.ini' % pwd)
+atmosphere.config.add_config_ini('%s/../config/main.ini' % pwd, '%s/../config/secure.ini' % pwd)
 
 
 class MyTestCase(unittest.TestCase):

@@ -1,13 +1,13 @@
 import os
 import unittest
 
-import air.config
-from air.machine.virtual_machines_templates import *
+import atmosphere.config
+from atmosphere.machine.virtual_machines_templates import *
 
 __author__ = 'paoolo'
 
 pwd = os.path.dirname(os.path.abspath(__file__))
-air.config.add_config_ini('%s/../config/main.ini' % pwd, '%s/../config/secure.ini' % pwd)
+atmosphere.config.add_config_ini('%s/../config/main.ini' % pwd, '%s/../config/secure.ini' % pwd)
 
 
 class MyTestCase(unittest.TestCase):

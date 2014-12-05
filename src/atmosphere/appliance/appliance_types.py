@@ -1,4 +1,4 @@
-import air.tools
+import atmosphere.tools
 
 __author__ = 'paoolo'
 
@@ -17,7 +17,7 @@ def get_all_appliance_types(name=None):
         url += 'name=%s' % str(name)
     if len(url) > 0:
         url = '&' + url
-    return air.tools.create_req(url=url)
+    return atmosphere.tools.create_req(url=url)
 
 
 get_all_app_type = get_all_appliance_types
@@ -31,7 +31,7 @@ def get_app_type(_id):
     :return:
     """
     url = '/%d' % int(_id)
-    return air.tools.create_req(url=url)
+    return atmosphere.tools.create_req(url=url)
 
 
 def create_app_type(appliance_id,
@@ -55,9 +55,9 @@ def create_app_type(appliance_id,
     :param security_proxy_id: integer (optional)
     :return:
     """
-    _data = air.tools.get_data(locals())
+    _data = atmosphere.tools.get_data(locals())
     body = {'appliance_type': _data}
-    return air.tools.create_req_json_body(method=air.tools.HTTP_POST, body=body)
+    return atmosphere.tools.create_req_json_body(method=atmosphere.tools.HTTP_POST, body=body)
 
 
 def update_app_type(_id, appliance_id=None, name=None, description=None,
@@ -81,11 +81,11 @@ def update_app_type(_id, appliance_id=None, name=None, description=None,
     :param security_proxy_id: integer (optional)
     :return:
     """
-    _data = air.tools.get_data(locals())
+    _data = atmosphere.tools.get_data(locals())
     _data['id'] = _id
     body = {'appliance_type': _data}
     url = '/%s' % str(_id)
-    _data = air.tools.create_req_json_body(method=air.tools.HTTP_PUT, url=url, body=body)
+    _data = atmosphere.tools.create_req_json_body(method=atmosphere.tools.HTTP_PUT, url=url, body=body)
 
 
 def delete_app_type(_id):
@@ -96,4 +96,4 @@ def delete_app_type(_id):
     :return:
     """
     url = '/%s' % str(_id)
-    return air.tools.create_req(method=air.tools.HTTP_DELETE, url=url)
+    return atmosphere.tools.create_req(method=atmosphere.tools.HTTP_DELETE, url=url)

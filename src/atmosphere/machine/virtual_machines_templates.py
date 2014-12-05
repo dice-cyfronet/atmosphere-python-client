@@ -1,4 +1,4 @@
-import air.tools
+import atmosphere.tools
 
 __author__ = 'paoolo'
 
@@ -12,4 +12,4 @@ def get_all_virtual_machines_templates(_all=False):
     :return:
     """
     url = '?all=true' if _all else ''
-    return air.tools.create_req(url=url)
+    return atmosphere.tools.create_req(url=url)

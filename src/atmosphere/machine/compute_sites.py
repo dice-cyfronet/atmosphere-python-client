@@ -1,5 +1,5 @@
-import air.config
-import air.tools
+import atmosphere.config
+import atmosphere.tools
 
 __author__ = 'paoolo'
 
@@ -12,7 +12,7 @@ def get_all_compute_sites():
 
     :return:
     """
-    return air.tools.create_req()
+    return atmosphere.tools.create_req()
 
 
 def get_compute_sites(_id):
@@ -23,4 +23,4 @@ def get_compute_sites(_id):
     :return:
     """
     url = '/%s' % str(_id)
-    return air.tools.create_req(url=url)
+    return atmosphere.tools.create_req(url=url)

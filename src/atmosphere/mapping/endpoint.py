@@ -1,4 +1,4 @@
-import air.tools
+import atmosphere.tools
 
 __author__ = 'paoolo'
 
@@ -11,7 +11,7 @@ def get_all_endpoints():
 
     :return:
     """
-    return air.tools.create_req()
+    return atmosphere.tools.create_req()
 
 
 def get_endpoint(_id):
@@ -22,7 +22,7 @@ def get_endpoint(_id):
     :return:
     """
     url = '/%s' % str(_id)
-    return air.tools.create_req(url=url)
+    return atmosphere.tools.create_req(url=url)
 
 
 def create_endpoint(port_mapping_template_id, name=None,
@@ -41,9 +41,9 @@ def create_endpoint(port_mapping_template_id, name=None,
     :param secured: if endpoint is secured (optional, default False)
     :return:
     """
-    _data = air.tools.get_data(locals())
+    _data = atmosphere.tools.get_data(locals())
     body = {'endpoint': _data}
-    return air.tools.create_req_json_body(method=air.tools.HTTP_POST, body=body)
+    return atmosphere.tools.create_req_json_body(method=atmosphere.tools.HTTP_POST, body=body)
 
 
 def update_endpoint(_id, port_mapping_template_id=None, name=None,
@@ -63,11 +63,11 @@ def update_endpoint(_id, port_mapping_template_id=None, name=None,
     :param secured: if endpoint is secured (optional, default False)
     :return:
     """
-    _data = air.tools.get_data(locals())
+    _data = atmosphere.tools.get_data(locals())
     _data['id'] = _id
     body = {'endpoint': _data}
     url = '/%s' % str(_id)
-    return air.tools.create_req_json_body(method=air.tools.HTTP_POST, url=url, body=body)
+    return atmosphere.tools.create_req_json_body(method=atmosphere.tools.HTTP_POST, url=url, body=body)
 
 
 def delete_endpoint(_id):
@@ -78,7 +78,7 @@ def delete_endpoint(_id):
     :return:
     """
     url = '/%s' % str(_id)
-    return air.tools.create_req(method=air.tools.HTTP_DELETE, url=url)
+    return atmosphere.tools.create_req(method=atmosphere.tools.HTTP_DELETE, url=url)
 
 
 def get_endpoint_descriptor(_id):
@@ -89,4 +89,4 @@ def get_endpoint_descriptor(_id):
     :return:
     """
     url = '/%s/descriptor' % str(_id)
-    return air.tools.create_req(method=air.tools.HTTP_GET, url=url)
+    return atmosphere.tools.create_req(method=atmosphere.tools.HTTP_GET, url=url)

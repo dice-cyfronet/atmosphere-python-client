@@ -1,13 +1,13 @@
 import os
 import unittest
 
-import air.config
-from air.mapping.port_mappings import *
+import atmosphere.config
+from atmosphere.mapping.port_mappings import *
 
 __author__ = 'paoolo'
 
 pwd = os.path.dirname(os.path.abspath(__file__))
-air.config.add_config_ini('%s/../config/main.ini' % pwd, '%s/../config/secure.ini' % pwd)
+atmosphere.config.add_config_ini('%s/../config/main.ini' % pwd, '%s/../config/secure.ini' % pwd)
 
 
 class MyTestCase(unittest.TestCase):

@@ -1,4 +1,4 @@
-import air.tools
+import atmosphere.tools
 
 __author__ = 'paoolo'
 
@@ -17,7 +17,7 @@ def get_all_virtual_machines(app_id=None):
         url += 'appliance_id=%s' % str(app_id)
     if len(url) > 0:
         url = '?' + url
-    return air.tools.create_req(url=url)
+    return atmosphere.tools.create_req(url=url)
 
 
 def get_virtual_machines(_id):
@@ -28,4 +28,4 @@ def get_virtual_machines(_id):
     :return:
     """
     url = '/%s' % str(_id)
-    return air.tools.create_req(url=url)
+    return atmosphere.tools.create_req(url=url)
