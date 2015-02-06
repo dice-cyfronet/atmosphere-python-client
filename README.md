@@ -1,5 +1,4 @@
-atmosphere-python-client
-========================
+# atmosphere-python-client
 
 [![Build Status](https://travis-ci.org/dice-cyfronet/atmosphere-python-client.svg?branch=master)](https://travis-ci.org/dice-cyfronet/atmosphere-python-client)
 [![Code Health](https://landscape.io/github/dice-cyfronet/atmosphere-python-client/master/landscape.svg?style=flat)](https://landscape.io/github/dice-cyfronet/atmosphere-python-client/master)
@@ -16,32 +15,33 @@ atmosphere-python-client
 [![Download format](https://pypip.in/format/atmosphere-python-client/badge.svg?style=flat)](https://pypi.python.org/pypi/atmosphere-python-client/)
 [![Downloads](https://pypip.in/download/atmosphere-python-client/badge.svg?style=flat)](https://pypi.python.org/pypi/atmosphere-python-client/)
 
-Installation
-------------
+This library provides a wrapper of REST operation performed by [Atmosphere](https://github.com/dice-cyfronet/atmosphere).
+
+## Installation
 
 Download stable version and run command `python setup.py install`.
 
 If you have installed `atmosphere-client-python`, if any problem occurs, run
 `python setup.py clean` and/or `pip uninstall atmosphere-client-python`.
 
-Test
-----
+## Examples
 
 Copy file `config/main-example.ini` to `config/main.ini` and
 `config/secure-example.ini` to `config/secure.ini`. Edit these files.
-Execute `test/run-test.sh`. You do not need to install `atmosphere-client-python`.
+You will find it in [`examples/`](examples/).
 
-Usage
------
+## Usage
 
-**Config**
+### Config
 
 To use *atmosphere* API you need to have `API_PRIVATE_TOKEN` or `API_MI_TICKET`.
+Copy file `config/main-example.ini` to `config/main.ini` and
+`config/secure-example.ini` to `config/secure.ini`. Edit these files.
 You need to set it via config files, which are loaded via `config.add_config_ini()`.
 
-Example of config files are in `config/.
+Example of config files are in [`config/`](config/).
 
-**Use in code**
+### Use in code
 
     import atmosphere.config
     atmosphere.config.add_config_ini('path/to/main.ini', 'path/to/secure.ini', 'path/to/other.ini', ...)
