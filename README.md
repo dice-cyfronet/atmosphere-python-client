@@ -12,7 +12,6 @@
 [![Development Status](https://pypip.in/status/atmosphere-python-client/badge.svg?style=flat)](https://pypi.python.org/pypi/atmosphere-python-client/)
 [![License](https://pypip.in/license/atmosphere-python-client/badge.svg?style=flat)](https://pypi.python.org/pypi/atmosphere-python-client/)
 
-[![Download format](https://pypip.in/format/atmosphere-python-client/badge.svg?style=flat)](https://pypi.python.org/pypi/atmosphere-python-client/)
 [![Downloads](https://pypip.in/download/atmosphere-python-client/badge.svg?style=flat)](https://pypi.python.org/pypi/atmosphere-python-client/)
 
 This library provides a wrapper of REST operation performed by [Atmosphere](https://github.com/dice-cyfronet/atmosphere).
