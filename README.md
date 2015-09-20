@@ -5,14 +5,10 @@
 [![Codacy Badge](https://www.codacy.com/project/badge/d90b929be42e4593a4ec6bfcc811cd44?style=flat)](https://www.codacy.com/public/pawel/atmosphere-python-client)
 [![Coverage Status](https://coveralls.io/repos/dice-cyfronet/atmosphere-python-client/badge.svg)](https://coveralls.io/r/dice-cyfronet/atmosphere-python-client)
 
-[![Supported Python versions](https://pypip.in/py_versions/atmosphere-python-client/badge.svg?style=flat)](https://pypi.python.org/pypi/atmosphere-python-client/)
-[![Supported Python implementations](https://pypip.in/implementation/atmosphere-python-client/badge.svg?style=flat)](https://pypi.python.org/pypi/atmosphere-python-client/)
-[![Latest Version](https://pypip.in/version/atmosphere-python-client/badge.svg?style=flat)](https://pypi.python.org/pypi/atmosphere-python-client/)
-
-[![Development Status](https://pypip.in/status/atmosphere-python-client/badge.svg?style=flat)](https://pypi.python.org/pypi/atmosphere-python-client/)
-[![License](https://pypip.in/license/atmosphere-python-client/badge.svg?style=flat)](https://pypi.python.org/pypi/atmosphere-python-client/)
-
-[![Downloads](https://pypip.in/download/atmosphere-python-client/badge.svg?style=flat)](https://pypi.python.org/pypi/atmosphere-python-client/)
+[![PyPI](https://img.shields.io/pypi/l/atmosphere-python-client.svg)]()
+[![PyPI](https://img.shields.io/pypi/pyversions/atmosphere-python-client.svg)]()
+[![PyPI](https://img.shields.io/pypi/implementation/atmosphere-python-client.svg)]()
+[![PyPI](https://img.shields.io/pypi/status/atmosphere-python-client.svg)]()
 
 This library provides a wrapper of REST operation performed by [Atmosphere](https://github.com/dice-cyfronet/atmosphere).
 
