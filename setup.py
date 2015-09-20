@@ -4,14 +4,13 @@ import os
 
 __author__ = 'paoolo'
 
-pwd = os.path.dirname(os.path.abspath(__file__))
-
 try:
     from setuptools import setup
 except ImportError:
+    print 'No setuptools installed, use distutils'
     from distutils.core import setup
 
-with open('%s/requirements.txt' % pwd) as f:
+with open('requirements.txt') as f:
     required = f.read().splitlines()
 
 setup(
@@ -24,11 +23,11 @@ setup(
         'atmosphere.property'
     ],
     package_dir={
-        'atmosphere': '%s/src/atmosphere' % pwd,
-        'atmosphere.appliance': '%s/src/atmosphere/appliance' % pwd,
-        'atmosphere.machine': '%s/src/atmosphere/machine' % pwd,
-        'atmosphere.mapping': '%s/src/atmosphere/mapping' % pwd,
-        'atmosphere.property': '%s/src/atmosphere/property' % pwd
+        'atmosphere': 'src/atmosphere',
+        'atmosphere.appliance': 'src/atmosphere/appliance',
+        'atmosphere.machine': 'src/atmosphere/machine',
+        'atmosphere.mapping': 'src/atmosphere/mapping',
+        'atmosphere.property': 'src/atmosphere/property'
     },
     install_requires=required,
     version='1.0',
