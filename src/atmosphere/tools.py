@@ -24,7 +24,8 @@ __logger.addHandler(__console_handler)
 def _get_content(api_url, method, api_prefix, url, body, headers, https=False):
     try:
         if https:
-            connection = httplib.HTTPSConnection(api_url)
+            proxy_cert = config.X509_PROXY_FILE
+            connection = httplib.HTTPSConnection(api_url, key_file = proxy_cert, cert_file = proxy_cert)
         else:
             connection = httplib.HTTPConnection(api_url)
 
